@@ -1,0 +1,49 @@
+package Zadanie_1;
+import java.util.Vector;
+public class Punkt_6 {
+	public static void main(String[] args) {
+		String[] slova= {"Drova", "Color", "coloc", "Wall", "windows"};
+	    Vector<String> vector = new Vector<>();
+	    for (int i=0; i<slova.length; i++) {
+	    	vector.add(slova[i]);
+	    }
+	    int a=0;
+	    int b=0;
+	    int c=0;
+	    for (int i=0; i<slova.length; i++) {
+	    	String ss=vector.get(i);
+	    	if (Length(ss)==5) {
+	    		a++;
+	    	}
+	    	if (Palindrom(ss)=="+") {
+	    	    b++;	
+	    	}
+	    	if (Beggins(ss)==true) {
+	    		c++;
+	    	}
+	    }
+	    System.out.println("Количество пятибуквенных слов: "+a);
+	    System.out.println("Количество палиндромов: "+b);
+	    System.out.println("Количество слов на букву W: "+c);
+	}
+	public static int Length(String s) {
+		int l=s.length();
+		return l;
+	}
+	public static String Palindrom(String g){ 
+		String plus="+"; 
+		String minus="-"; 
+		for (int i = 0; i< g.length()/2; i++) { 
+		    if (g.toLowerCase().charAt(i) != g.toLowerCase().charAt(g.length() - 1 - i)) { 
+		        return minus; 
+		    }
+		} 
+		return plus; 
+    }
+	public static boolean Beggins(String y) {
+		if (y.charAt(0)=='W') {
+			return true;
+		}
+		return false;
+	}
+}
