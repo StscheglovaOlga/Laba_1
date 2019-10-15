@@ -1,0 +1,22 @@
+package Zadanie_1;
+public class Punkt_5 {
+	public static void main(String[] args) {
+	    double k=-Math.PI;
+	    double m=Math.PI;
+	    Function [] Integral = new Function [3]; 
+		Integral[0]= x -> (2*Math.sin(x) + 1);
+	    Integral[1]= x -> (-Math.pow(x/Math.PI,2)-2*x+5*Math.PI);
+	  	Integral[2]= x -> (1/2*Math.pow(Math.cos(x),2)+1);
+	    System.out.println("Интеграл а)= "+C(k,m,10,Integral[0]));
+	    System.out.println("Интеграл б)= "+C(k,m,10,Integral[1]));
+	    System.out.println("Интеграл в)= "+C(k,m,10,Integral[2]));
+	}
+	public static double C(double k, double m, int n, Function function) {
+	    double nu = 0;
+	    double h =(m-k)/n;
+	    for(int i=0;i<n; i++) {
+	        nu+=function.Integral(k+h*(i+0.5))*h; 
+	    }
+	    return nu;
+	}
+}
