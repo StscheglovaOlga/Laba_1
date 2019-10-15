@@ -1,0 +1,5 @@
+# Laba_1
+package Zadanie_1;
+public interface Function {
+    double Integral(double x);
+}
