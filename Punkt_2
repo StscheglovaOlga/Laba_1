@@ -1,0 +1,51 @@
+package Zadanie_1;
+public class Punkt_2 {
+	static int sum=0;
+	public static void main(String[] args) {
+	    Function [] func=new Function [4];
+        func[0]=x -> x*Math.sin(x)-0.5;
+        func[1]=x -> Math.log10(Math.pow(x,2)-3*x+2);
+        func[2]=x -> Math.log10(Math.pow(x,2)-3*x+2);
+        func[3]=x -> 0.5*Math.tan((2/3)*(x + Math.PI/4)-1);
+        double [] x =new double[5];
+        for (int i = 0; i < x.length; i++) {
+            x[i] =Math.random()*20-10;
+        }
+        for (int i = 0; i <4; i++) {
+        	System.out.println("Функция"+(i+1));
+    	    System.out.print("Количество отрицательных значений: ");
+            I(func[i],-2*Math.PI,2*Math.PI,Math.PI/6);
+            B(func[i],x);
+        }
+        System.out.println("Всего точек: "+sum);
+	}
+	public static void I(Function p, double a, double b, double dx){
+        double itg=0;
+        int otr=0;
+        for (double i = a; i <= b; i+=dx) {
+            sum++;
+            if (p.Integral(i)<0) {
+                otr++;	
+            }
+            if(i!=b) {
+            	itg=itg+dx*p.Integral(i+dx/2);
+            }
+        }
+        System.out.println(otr);
+    }
+	public static void B(Function p, double [] x){
+        double min = p.Integral(x[0]);
+        double max = p.Integral(x[0]);
+        for (int i = 0; i < x.length; i++) {
+            if (p.Integral(x[i])>max) {
+            	max = p.Integral(x[i]);
+            }else {
+            	if (p.Integral(x[i])<min) {
+            		min = p.Integral(x[i]);
+            	}
+            }
+        }
+        System.out.println("Максимальное значение: "+ max);
+        System.out.println("Минимальное значение: "+ min);
+    }
+}
